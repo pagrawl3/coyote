@@ -1,5 +1,6 @@
 import os
 import re
+import getfunctiontext
 pattern = '(at[" "]0x[0-9A-F]*:)|(by[" "]0x[0-9A-F]*:)'
 prog = re.compile(pattern)
 def trim(a):
@@ -17,12 +18,35 @@ def parseLine(line):
         middle = last.split(':')[0][1:]
         third = last.split(':')[1][:-1]
         first = trim(first)
-        return {'function':parseFunction(first,third),'filename':middle,
-                'lineno':third,'clickable':True}
+        return {'function':parseFunction(first,middle),'filename':middle,
+                'lineno':int(third),'clickable':True}
     return {'text':trim(cleanLine(line)),'clickable':False}
 
-def parseFunction(functionName,lineNo):
-    return functionName
+def parseFunction(functionName,filename):
+    if '(' in functionName:
+        fn = '('.join(functionName.split('(')[:-1])
+        temp = functionName.split('(')[-1][:-1].split(', ')
+        params = [w.split(' ')[0].split(':')[-1] for w in temp]
+        if params == ['']:
+            params = []
+        text,start,end = getfntext(filename,fn,params)
+        return {'name':fn,'params':params,'rawname':functionName,
+                'text':text,'start':start,'stop':end}
+    text,start,end = getfntext(filename,functionName,[])
+    return {'name':functionName,'params':[],'rawname':functionName,
+            'text':text,'start':start,'stop':end}
+
+def getfntext(filename,fn,params):
+    temp = getfunctiontext.test(filename,fn,params)
+    if not temp:
+        text = ""
+        start = 0
+        end = 0
+    else:
+        text = temp[0]
+        start = temp[1]
+        end = temp[2]
+    return text,start,end       
 
 def getSplitVal(raw):
     for w in raw.split('\r\n'):
@@ -30,6 +54,9 @@ def getSplitVal(raw):
             return w + '\r\n'
 
 def test():
+    return parseFile('output.txt')
+
+def parseFile(filename):
     filename = 'output.txt'
     raw = open(filename,'rb').read()
     splitVal = getSplitVal(raw)
@@ -37,7 +64,8 @@ def test():
     splitVal = splitVal[:-2]
     data = [w.replace(splitVal,'') for w in data]
     data[0] = data[0].lstrip()
-    return data,[parseError(w) for w in data]
+    out = [parseError(w) for w in data]
+    return [w for w in out if w['trace']]
 
 def parseError(chunk):
     data = chunk.split('\r\n')
@@ -50,6 +78,8 @@ def parseError(chunk):
                 out['error'].append(w)
             else:
                 out['other'].append(w)
+        out['error'] = '\n'.join(out['error'])
+        out['other'] = '\n'.join(out['other'])
         return out
     return None
 
