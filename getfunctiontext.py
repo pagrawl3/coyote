@@ -94,7 +94,6 @@ def test(filename, functionName, param_list):
                         pattern += x + '[.]*'
                     prog = re.compile(pattern)
                     i=0
-                    print "found? " + testname
                     checked = ""
                     while(data[w[0]+i]!=";"):
                         checked += data[w[0]+i]
@@ -102,8 +101,6 @@ def test(filename, functionName, param_list):
                             cont=1
                             break
                         i+=1
-                    print checked
-                    print "cont : " + str(cont)
                     if(prog.search(params) and cont==1):
                         start=1
                         firstFound=0

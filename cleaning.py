@@ -1,6 +1,6 @@
 import os
 import re
-from getfunctiontext import getFunctionText
+import getfunctiontext
 pattern = '(at[" "]0x[0-9A-F]*:)|(by[" "]0x[0-9A-F]*:)'
 prog = re.compile(pattern)
 def trim(a):
@@ -30,9 +30,9 @@ def parseFunction(functionName,filename):
         if params == ['']:
             params = []
         return {'name':fn,'params':params,'rawname':functionName,
-                'text':getFunctionText(filename,fn,params)}
+                'text':getfunctiontext.test(filename,fn,params)}
     return {'name':functionName,'params':[],'rawname':functionName,
-            'text':getFunctionText(filename,fn,params)}
+            'text':getfunctiontext.test(filename,functionName,[])}
 
 def getSplitVal(raw):
     for w in raw.split('\r\n'):
@@ -40,6 +40,9 @@ def getSplitVal(raw):
             return w + '\r\n'
 
 def test():
+    return parseFile('output.txt')
+
+def parseFile(filename):
     filename = 'output.txt'
     raw = open(filename,'rb').read()
     splitVal = getSplitVal(raw)
@@ -47,7 +50,7 @@ def test():
     splitVal = splitVal[:-2]
     data = [w.replace(splitVal,'') for w in data]
     data[0] = data[0].lstrip()
-    return data,[parseError(w) for w in data]
+    return [parseError(w) for w in data]
 
 def parseError(chunk):
     data = chunk.split('\r\n')
