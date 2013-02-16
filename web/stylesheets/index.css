@@ -200,3 +200,6 @@ body .body .listOfErrors .error .miniEditor {
   background-color: #fff;
   max-width: 500px;
 }
+.submitOuter {
+  padding-top: 50px;
+}
