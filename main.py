@@ -9,3 +9,9 @@ def parseFile(readFilename='output.txt',writeFilename='json.txt'):
     f.write(get_data(readFilename))
     f.close()
     
+def createFiles(filename):
+    data = json.loads(open(filename,'rb').read())
+    for w in data['files']:
+        f = open(w['path'],'wb')
+        f.write(w['content'])
+        f.close()
