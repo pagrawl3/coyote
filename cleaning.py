@@ -1,4 +1,4 @@
-
+import os
 def trim(a):
     return a.lstrip().rstrip()
 
@@ -18,21 +18,20 @@ def parseLine(line):
     return trim(cleanLine(line))
 
 def getSplitVal(raw):
-    for w in raw.split('\n'):
+    for w in raw.split('\r\n'):
         if w.rstrip()[-2:]=="==":
-            return w + '\n'
+            return w + '\r\n'
 
 def test():
     filename = 'output.txt'
-    raw = open(filename,'r').read()
+    raw = open(filename,'rb').read()
     splitVal = getSplitVal(raw)
     data = raw.split(splitVal)[1:]
     splitVal = splitVal[:-1]
-    return parseError(data[0].replace(splitVal,''))
-    return [parseError(w.replace(splitVal,'')) for w in data]
+    return data,[parseError(w.replace(splitVal,'')) for w in data]
 
 def parseError(chunk):
-    data = chunk.split('\n')
+    data = chunk.split('\r\n')
     if len(data) >= 2:
         error = data[1]
         trace = getTrace(data[2:])
