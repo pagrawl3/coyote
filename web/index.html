@@ -42,17 +42,21 @@
 		</center>
 		<div class="row body">
 			<div class="six columns mainEditor">
-				<div id="editorTitle"><h2>Name of file<h2></div>
+				<div id="editorTitle"><h2><span aria-hidden="true" data-icon="&#xe003;"></span>fileName.cpp<h2></div>
 				<div id="editor"></div>
 			</div>
 			<div class="six columns errors">
 				<div class="errorWindow">
 					<h2>Errors</h2>
 					<ul class="errorList">
-						<li class="errorItem active">Error1</li>
-						<li class="errorItem">Error2</li>
-						<li class="errorItem">Error3</li>
+						<li class="errorItem active"><span aria-hidden="true" data-icon="&#xe000;"></span>Invalid Read Size :: Line 40</li>
+						<li class="errorItem"><span aria-hidden="true" data-icon="&#xe000;"></span>Allocation Failed :: Line 29</li>
+						<li class="errorItem"><span aria-hidden="true" data-icon="&#xe000;"></span>Some random error :: Line 43</li>
 					</ul>
+				</div>
+				<div class="errorDescripTitle"><h1>Files where this error appears<h1></div>
+				<div class="listOfErrors">
+					<!-- Errors come here -->
 				</div>
 			</div>
 		</div>

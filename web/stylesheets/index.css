@@ -4,8 +4,8 @@
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300);
 @font-face {
-  font-family: SmartFolder;
-  src: url('../fonts/smartfolder.ttf');
+  font-family: iconFont;
+  src: url('../fonts/val.ttf');
 }
 body {
   background: url("../images/tiny_grid.png") repeat;
@@ -42,6 +42,19 @@ body .body .mainEditor #editorTitle h2 {
   text-align: center;
   color: #fff;
 }
+body .body .mainEditor #editorTitle h2 span {
+  display: inline-block;
+  font-family: 'iconFont';
+  line-height: 15px;
+  speak: none;
+  vertical-align: middle;
+  float: left;
+  font-size: 30px;
+  line-height: 20px;
+}
+body .body .mainEditor #editorTitle h2 span:before {
+  content: attr(data-icon);
+}
 body .body .mainEditor #editor {
   box-shadow: 10px 10px 0px 0px rgba(1, 1, 1, 0.1);
   border: 1px solid rgba(1, 1, 1, 0.6);
@@ -55,7 +68,7 @@ body .body .mainEditor #editor {
 }
 body .body .errors .errorWindow {
   background-color: #fff;
-  height: 200px;
+  padding-bottom: 30px;
 }
 body .body .errors .errorWindow h2 {
   display: block;
@@ -69,15 +82,120 @@ body .body .errors .errorWindow h2 {
 body .body .errors .errorWindow .errorList {
   list-style: none;
   display: block;
-  margin-left: 30px;
+  margin-left: 40px;
   padding-left: 0;
 }
 body .body .errors .errorWindow .errorList .errorItem {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   color: #aaa;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-out;
+}
+body .body .errors .errorWindow .errorList .errorItem:hover {
+  color: #555;
+}
+body .body .errors .errorWindow .errorList .errorItem span {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 20px;
+  line-height: 11px;
+  font-family: 'iconFont';
+  speak: none;
+  vertical-align: middle;
+}
+body .body .errors .errorWindow .errorList .errorItem span:before {
+  content: attr(data-icon);
 }
 body .body .errors .errorWindow .errorList .active {
   color: #000;
+}
+body .body .errors .errorDescripTitle {
+  margin-top: 30px;
+}
+body .body .errors .errorDescripTitle h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+}
+body .body .listOfErrors .arrow {
+  position: relative;
+  float: left;
+  top: 10px;
+  display: block;
+  font-family: 'iconFont';
+  font-size: 24px;
+  speak: none;
+  vertical-align: middle;
+}
+body .body .listOfErrors .arrow:before {
+  content: attr(data-icon);
+}
+body .body .listOfErrors .notFirst {
+  margin-left: 30px;
+}
+body .body .listOfErrors .error {
+  margin-bottom: 10px;
+}
+body .body .listOfErrors .error .errorContainer {
+  display: inline-block;
+  background-color: #fff;
+  height: 50px;
+  width: 500px;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+body .body .listOfErrors .error .errorContainer .title {
+  display: inline-block;
+  float: left;
+  margin-top: -7px;
+  font-size: 22px;
+}
+body .body .listOfErrors .error .errorContainer .descrip {
+  display: inline-block;
+  margin-top: -2px;
+  float: right;
+  font-size: 16px;
+}
+body .body .listOfErrors .error .errorMenu {
+  display: inline-block;
+  margin-left: 20px;
+}
+body .body .listOfErrors .error .errorMenu span {
+  display: inline-block;
+  font-family: 'iconFont';
+  line-height: 15px;
+  speak: none;
+  vertical-align: middle;
+  margin-top: 10px;
+  height: 64px;
+  color: #777;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-out;
+}
+body .body .listOfErrors .error .errorMenu span:before {
+  content: attr(data-icon);
+}
+body .body .listOfErrors .error .errorMenu span:hover {
+  color: #000;
+}
+body .body .listOfErrors .error .errorMenu .larger {
+  margin-left: 10px;
+  font-size: 26px;
+}
+body .body .listOfErrors .error .miniEditor {
+  display: block;
+  position: relative;
+  margin-top: -32px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0px;
+  background-color: #fff;
+  max-width: 500px;
 }
