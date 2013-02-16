@@ -1,5 +1,6 @@
 import os
 
+final_listing = []
 for dirname, dirnames, filenames in os.walk('.'):
     # print path to all subdirectories first.
     listing = []
@@ -9,9 +10,10 @@ for dirname, dirnames, filenames in os.walk('.'):
     for filename in filenames:
         listing.append(os.path.join(dirname, filename))
 
-    final_listing = [w for w in listing if ((".h" in w[-2:] or ".cpp" in w[-4:]) and 'svn-base' not in w)]
-    for a in final_listing:
-        #if len(a)>0:
-        print a
+    final_listing = final_listing + [w for w in listing if ((".h" in w[-2:] or ".cpp" in w[-4:]) and 'svn-base' not in w and len(w)>0)]
+
+return final_listing
+    
+    
 
     
