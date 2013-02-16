@@ -22,6 +22,17 @@ def getFunctionText(filename, functionName, param_list):
                 if(count==0 and firstFound):
                     return 
 
+def checkfnname(fn,testname):
+    return (' ' + fn) in testname or ('\t' + fn) in testname or ('\n' + fn) in testname
+
+def search(param_list,params):
+    params2 = params.split(',')
+    if len(param_list) != len(params2):
+        if(len(param_list)==0 and ',' not in params):
+            return True
+        return False
+    return all(x in y for (x,y) in zip(param_list,params2))
+
 def test(filename, functionName, param_list):
     # Have to check for " and  ' and \
     # Check for \ only if it is inside " or '
@@ -83,7 +94,7 @@ def test(filename, functionName, param_list):
                     firstFound=1
                 elif temp1==")" and (doubleQ == -1 and singleQ == -1):
                     count-=1
-                if (' ' + functionName) in testname and count==0 and doubleQ==-1 and singleQ==-1:
+                if checkfnname(functionName,testname) and count==0 and doubleQ==-1 and singleQ==-1:
                     #
                     i=0
                     params=""
@@ -103,7 +114,7 @@ def test(filename, functionName, param_list):
                             cont=1
                             break
                         i+=1
-                    if(prog.search(params) and cont==1):
+                    if(search(param_list,params) and cont==1):
                         start=1
                         startIndex = w[0]
                         firstFound=0

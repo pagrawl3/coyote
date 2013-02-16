@@ -31,10 +31,10 @@ def parseFunction(functionName,filename):
             params = []
         text,start,end = getfntext(filename,fn,params)
         return {'name':fn,'params':params,'rawname':functionName,
-                'text':text,'start':start,'stop':end}
+                'text':fn+text,'start':start,'stop':end}
     text,start,end = getfntext(filename,functionName,[])
     return {'name':functionName,'params':[],'rawname':functionName,
-            'text':text,'start':start,'stop':end}
+            'text':functionName+text,'start':start,'stop':end}
 
 def getfntext(filename,fn,params):
     temp = getfunctiontext.test(filename,fn,params)
