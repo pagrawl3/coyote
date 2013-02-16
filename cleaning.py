@@ -19,7 +19,7 @@ def parseLine(line):
         third = last.split(':')[1][:-1]
         first = trim(first)
         return {'function':parseFunction(first,middle),'filename':middle,
-                'lineno':third,'clickable':True}
+                'lineno':int(third),'clickable':True}
     return {'text':trim(cleanLine(line)),'clickable':False}
 
 def parseFunction(functionName,filename):
@@ -29,10 +29,24 @@ def parseFunction(functionName,filename):
         params = [w.split(' ')[0].split(':')[-1] for w in temp]
         if params == ['']:
             params = []
+        text,start,end = getfntext(filename,fn,params)
         return {'name':fn,'params':params,'rawname':functionName,
-                'text':getfunctiontext.test(filename,fn,params)}
+                'text':text,'start':start,'stop':end}
+    text,start,end = getfntext(filename,functionName,[])
     return {'name':functionName,'params':[],'rawname':functionName,
-            'text':getfunctiontext.test(filename,functionName,[])}
+            'text':text,'start':start,'stop':end}
+
+def getfntext(filename,fn,params):
+    temp = getfunctiontext.test(filename,fn,params)
+    if not temp:
+        text = ""
+        start = 0
+        end = 0
+    else:
+        text = temp[0]
+        start = temp[1]
+        end = temp[2]
+    return text,start,end       
 
 def getSplitVal(raw):
     for w in raw.split('\r\n'):
@@ -50,7 +64,8 @@ def parseFile(filename):
     splitVal = splitVal[:-2]
     data = [w.replace(splitVal,'') for w in data]
     data[0] = data[0].lstrip()
-    return [parseError(w) for w in data]
+    out = [parseError(w) for w in data]
+    return [w for w in out if w['trace']]
 
 def parseError(chunk):
     data = chunk.split('\r\n')
@@ -63,6 +78,8 @@ def parseError(chunk):
                 out['error'].append(w)
             else:
                 out['other'].append(w)
+        out['error'] = '\n'.join(out['error'])
+        out['other'] = '\n'.join(out['other'])
         return out
     return None
 

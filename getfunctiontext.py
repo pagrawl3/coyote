@@ -25,7 +25,8 @@ def getFunctionText(filename, functionName, param_list):
 def test(filename, functionName, param_list):
     # Have to check for " and  ' and \
     # Check for \ only if it is inside " or '
-
+    startIndex = 0
+    endIndex = 0
     data = open(filename, "rb").read()
     raw = data
     testname = ""
@@ -56,7 +57,8 @@ def test(filename, functionName, param_list):
             elif temp1=="}" and (doubleQ == -1 and singleQ == -1):
                 count-=1
             if count==0 and firstFound==1:
-                return ''.join(text)
+                endIndex = w[0]
+                return ''.join(text),startIndex,endIndex
         else:
             if(doubleQ==-1 and singleQ==-1 and not blockQuote and not lineQuote):
                 testname+=temp1
@@ -103,6 +105,7 @@ def test(filename, functionName, param_list):
                         i+=1
                     if(prog.search(params) and cont==1):
                         start=1
+                        startIndex = w[0]
                         firstFound=0
                     testname=""
                         
