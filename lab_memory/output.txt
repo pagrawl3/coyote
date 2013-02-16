@@ -1,0 +1,151 @@
+Script started on Tue Feb 12 08:18:19 2013
+[?1034hbash-3.2$ valgrind --leak-check=full ./allocate[C[C[1@-[1@v[1@ 
+==1792== Memcheck, a memory error detector
+==1792== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==1792== Using Valgrind-3.9.0.SVN and LibVEX; rerun with -h for copyright info
+==1792== Command: ./allocate
+==1792== 
+--1792-- Valgrind options:
+--1792--    -v
+--1792--    --leak-check=full
+--1792-- Contents of /proc/version:
+--1792--   can't open /proc/version
+--1792-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--1792-- Page sizes: currently 4096, max supported 4096
+--1792-- Valgrind library directory: //lib/valgrind
+--1792-- ./allocate (rx at 0x100000000, rw at 0x100013000)
+--1792--    reading syms   from primary file (291 1315)
+--1792--    dSYM directory is missing; consider using --dsymutil=yes
+--1792-- /usr/lib/dyld (rx at 0x7fff5fc00000, rw at 0x7fff5fc35000)
+--1792--    reading syms   from primary file (6 1179)
+--1792-- Scheduler: using generic scheduler lock implementation.
+--1792-- Reading suppressions file: //lib/valgrind/default.supp
+==1792== embedded gdbserver: reading from /var/folders/36/7jhfd3nn7jnff281l6v4f7g80000gn/T//vgdb-pipe-from-vgdb-to-1792-by-rishabhmarya-on-???
+==1792== embedded gdbserver: writing to   /var/folders/36/7jhfd3nn7jnff281l6v4f7g80000gn/T//vgdb-pipe-to-vgdb-from-1792-by-rishabhmarya-on-???
+==1792== embedded gdbserver: shared mem   /var/folders/36/7jhfd3nn7jnff281l6v4f7g80000gn/T//vgdb-pipe-shared-mem-vgdb-1792-by-rishabhmarya-on-???
+==1792== 
+==1792== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==1792== don't want to do, unless you know exactly what you're doing,
+==1792== or are doing some strange experiment):
+==1792==   //lib/valgrind/../../bin/vgdb --pid=1792 ...command...
+==1792== 
+==1792== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==1792==   /path/to/gdb ./allocate
+==1792== and then give GDB the following command
+==1792==   target remote | //lib/valgrind/../../bin/vgdb --pid=1792
+==1792== --pid is optional if only one valgrind process is running
+==1792== 
+--1792-- REDIR: 0x7fff5fc1dfc0 (strcmp) redirected to 0x238059350 (???)
+--1792-- REDIR: 0x7fff5fc1b161 (arc4random) redirected to 0x2380593ee (???)
+--1792-- REDIR: 0x7fff5fc20a50 (strlen) redirected to 0x23805931f (???)
+--1792-- REDIR: 0x7fff5fc1c850 (strcpy) redirected to 0x23805936c (???)
+--1792-- REDIR: 0x7fff5fc19f17 (strcat) redirected to 0x238059330 (???)
+--1792-- /lib/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x1000, rw at 0x8000)
+--1792--    reading syms   from primary file (3 128)
+--1792--    dSYM= /lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--1792--    reading dwarf3 from dsyms file
+--1792-- /lib/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0xb000, rw at 0x16000)
+--1792--    reading syms   from primary file (47 333)
+--1792--    dSYM= /lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--1792--    reading dwarf3 from dsyms file
+--1792-- /usr/lib/libstdc++.6.0.9.dylib (rx at 0x1b000, rw at 0x8f000)
+--1792--    reading syms   from primary file (3246 326)
+--1792-- /usr/lib/libSystem.B.dylib (rx at 0xec000, rw at 0x11a000)
+--1792--    reading syms   from primary file (529 439)
+--1792-- /usr/lib/libc++abi.dylib (rx at 0x128000, rw at 0x134000)
+--1792--    reading syms   from primary file (178 135)
+--1792-- /usr/lib/system/libcache.dylib (rx at 0x13c000, rw at 0x142000)
+--1792--    reading syms   from primary file (28 32)
+--1792-- /usr/lib/system/libcommonCrypto.dylib (rx at 0x146000, rw at 0x189000)
+--1792--    reading syms   from primary file (96 358)
+--1792-- /usr/lib/system/libcompiler_rt.dylib (rx at 0x196000, rw at 0x19c000)
+--1792--    reading syms   from primary file (291 6)
+--1792-- /usr/lib/system/libcopyfile.dylib (rx at 0x1a3000, rw at 0x1ab000)
+--1792--    reading syms   from primary file (7 26)
+--1792-- /usr/lib/system/libdispatch.dylib (rx at 0x1b0000, rw at 0x1bf000)
+--1792--    reading syms   from primary file (114 431)
+--1792-- /usr/lib/system/libdnsinfo.dylib (rx at 0x1d0000, rw at 0x1d2000)
+--1792--    reading syms   from primary file (5 8)
+--1792-- /usr/lib/system/libdyld.dylib (rx at 0x1d5000, rw at 0x1da000)
+--1792--    reading syms   from primary file (68 92)
+--1792-- /usr/lib/system/libkeymgr.dylib (rx at 0x1df000, rw at 0x1e0000)
+--1792--    reading syms   from primary file (12 4)
+--1792-- /usr/lib/system/liblaunch.dylib (rx at 0x1e3000, rw at 0x1ee000)
+--1792--    reading syms   from primary file (117 1)
+--1792-- /usr/lib/system/libmacho.dylib (rx at 0x1f4000, rw at 0x1fb000)
+--1792--    reading syms   from primary file (86 5)
+--1792-- /usr/lib/system/libquarantine.dylib (rx at 0x206000, rw at 0x209000)
+--1792--    reading syms   from primary file (51 7)
+--1792-- /usr/lib/system/libremovefile.dylib (rx at 0x20d000, rw at 0x20f000)
+--1792--    reading syms   from primary file (14 4)
+--1792-- /usr/lib/system/libsystem_blocks.dylib (rx at 0x213000, rw at 0x215000)
+--1792--    reading syms   from primary file (27 27)
+--1792-- /usr/lib/system/libsystem_c.dylib (rx at 0x219000, rw at 0x2f7000)
+--1792--    reading syms   from primary file (1800 1823)
+==1792== Preferring higher priority redirection:
+--1792--     old: 0x00240cbd (memcpy$VARIANT$sse42) R-> (2018.0) 0x0000eb00 memcpy$VARIANT$sse42
+--1792--     new: 0x00240cbd (memcpy$VARIANT$sse42) R-> (2018.1) 0x0000efe0 memmove$VARIANT$sse42
+==1792== Preferring higher priority redirection:
+--1792--     old: 0x00240ebd (memcpy$VARIANT$sse3x) R-> (2018.0) 0x0000e8b0 memcpy$VARIANT$sse3x
+--1792--     new: 0x00240ebd (memcpy$VARIANT$sse3x) R-> (2018.1) 0x0000ee00 memmove$VARIANT$sse3x
+--1792-- /usr/lib/system/libsystem_dnssd.dylib (rx at 0x335000, rw at 0x33e000)
+--1792--    reading syms   from primary file (64 33)
+--1792-- /usr/lib/system/libsystem_info.dylib (rx at 0x343000, rw at 0x37f000)
+--1792--    reading syms   from primary file (689 510)
+--1792-- /usr/lib/system/libsystem_kernel.dylib (rx at 0x394000, rw at 0x3b5000)
+--1792--    reading syms   from primary file (767 72)
+--1792-- /usr/lib/system/libsystem_network.dylib (rx at 0x3c5000, rw at 0x3cb000)
+--1792--    reading syms   from primary file (23 100)
+--1792-- /usr/lib/system/libsystem_notify.dylib (rx at 0x3d1000, rw at 0x3db000)
+--1792--    reading syms   from primary file (115 55)
+--1792-- /usr/lib/system/libsystem_sandbox.dylib (rx at 0x3e1000, rw at 0x3e3000)
+--1792--    reading syms   from primary file (41 7)
+--1792-- /usr/lib/system/libunc.dylib (rx at 0x3e7000, rw at 0x3e9000)
+--1792--    reading syms   from primary file (30 4)
+--1792-- /usr/lib/system/libunwind.dylib (rx at 0x3ed000, rw at 0x3f4000)
+--1792--    reading syms   from primary file (102 67)
+--1792-- /usr/lib/system/libxpc.dylib (rx at 0x3fa000, rw at 0x418000)
+--1792--    reading syms   from primary file (523 218)
+--1792-- REDIR: 0x2ba5e0 (memset) redirected to 0xed50 (memset)
+--1792-- REDIR: 0x2bb4e0 (strlen) redirected to 0xe550 (strlen)
+--1792-- REDIR: 0x2ba178 (malloc) redirected to 0xc630 (malloc)
+--1792-- REDIR: 0x2ba12d (calloc) redirected to 0xd890 (calloc)
+--1792-- REDIR: 0x240cbd (memcpy$VARIANT$sse42) redirected to 0xefe0 (memmove$VARIANT$sse42)
+--1792-- REDIR: 0x2ba820 (strcmp) redirected to 0xe860 (strcmp)
+--1792-- REDIR: 0x2bb3f0 (strncmp) redirected to 0xe800 (strncmp)
+
+--1792-- REDIR: 0x2b96c7 (free) redirected to 0xdbd0 (free)
+Room Allocation (237/248)
+MEB 153 (31/32): W F
+MEB 218 (30/31): L H
+MEB 243 (29/30): S P Q
+MEB 335 (28/30): K R U V
+Siebel 1105 (24/24): G A X
+Siebel 1109 (23/24): M J I
+Siebel 1302 (20/21): Z N O
+Siebel 1304 (19/21): B D E
+BUR 140 (33/35): C Y T
+
+==1792== 
+==1792== HEAP SUMMARY:
+==1792==     in use at exit: 6,090 bytes in 29 blocks
+==1792==   total heap usage: 1,082 allocs, 1,053 frees, 187,281 bytes allocated
+==1792== 
+==1792== Searching for pointers to 29 not-freed blocks
+==1792== Checked 540,120 bytes
+==1792== 
+==1792== LEAK SUMMARY:
+==1792==    definitely lost: 0 bytes in 0 blocks
+==1792==    indirectly lost: 0 bytes in 0 blocks
+==1792==      possibly lost: 0 bytes in 0 blocks
+==1792==    still reachable: 6,090 bytes in 29 blocks
+==1792==         suppressed: 0 bytes in 0 blocks
+==1792== Reachable blocks (those to which a pointer was found) are not shown.
+==1792== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1792== 
+==1792== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1792== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+bash-3.2$ exit
+exit
+
+Script done on Tue Feb 12 08:18:32 2013

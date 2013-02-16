@@ -1,0 +1,235 @@
+Monad Autograder
+Testing lab_memory at 2013-02-04 21:15:52
+
+"The cheating sheet is key to success in CS 412 course." ~ CS 412 TA
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_constructor (valgrind) [5 pts]  - FAILED: Invalid read/write errors
+test_allocate (valgrind)  . [5 pts]  - FAILED: Invalid read/write errors
+test_printrooms (valgrind)  [20 pts] - FAILED: Invalid read/write errors
+test_any_output . . . . . . [30 pts] - passed
+test_correct_output . . . . [40 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 70
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+test_constructor (run under valgrind) [5 points]
+Result: FAILED: Invalid read/write errors
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_constructor [worth 5 points, output below]
+==27741== Mismatched free() / delete / delete []
+==27741==    at 0x4A0545F: operator delete(void*) (vg_replace_malloc.c:387)
+==27741==    by 0x41AF44: Room::clear() (room.cpp:86)
+==27741==    by 0x41ADC3: Room::~Room() (room.cpp:48)
+==27741==    by 0x418E25: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27741==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27741==    by 0x416C48: proxy_test::test_constructor(util::sizedpipestream<512ul>&) (unit_tests.cpp:13)
+==27741==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27741==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27741==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27741==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27741==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27741==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27741==  Address 0x4c77b40 is 0 bytes inside a block of size 208 alloc'd
+==27741==    at 0x4A0674C: operator new[](unsigned long) (vg_replace_malloc.c:305)
+==27741==    by 0x41AC95: Room::Room(std::string const&, int) (room.cpp:19)
+==27741==    by 0x41B463: fileio::readRoom(std::string const&) (fileio.cpp:106)
+==27741==    by 0x41B3C4: fileio::nextRoom() (fileio.cpp:98)
+==27741==    by 0x418DC9: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27741==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27741==    by 0x416C48: proxy_test::test_constructor(util::sizedpipestream<512ul>&) (unit_tests.cpp:13)
+==27741==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27741==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27741==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27741==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27741==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27741== 
+==27741== Mismatched free() / delete / delete []
+==27741==    at 0x4A0545F: operator delete(void*) (vg_replace_malloc.c:387)
+==27741==    by 0x41AF44: Room::clear() (room.cpp:86)
+==27741==    by 0x41ADC3: Room::~Room() (room.cpp:48)
+==27741==    by 0x418B07: Allocator::~Allocator() (allocator.cpp:26)
+==27741==    by 0x416D4A: proxy_test::test_constructor(util::sizedpipestream<512ul>&) (unit_tests.cpp:15)
+==27741==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27741==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27741==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27741==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27741==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27741==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27741==    by 0x404BEC: proxy::RunTests::run_single_test(char const*) (proxy.cpp:238)
+==27741==  Address 0x4c79890 is 0 bytes inside a block of size 208 alloc'd
+==27741==    at 0x4A0674C: operator new[](unsigned long) (vg_replace_malloc.c:305)
+==27741==    by 0x41AFC1: Room::copy(Room const&) (room.cpp:99)
+==27741==    by 0x41ADA4: Room::operator=(Room const&) (room.cpp:38)
+==27741==    by 0x418DF8: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27741==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27741==    by 0x416C48: proxy_test::test_constructor(util::sizedpipestream<512ul>&) (unit_tests.cpp:13)
+==27741==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27741==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27741==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27741==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27741==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27741==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27741== 
+Result: FAILED:
+Invalid read/write errors
+
+----------------------------------------------------------------
+test_allocate (run under valgrind) [5 points]
+Result: FAILED: Invalid read/write errors
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_allocate [worth 5 points, output below]
+==27748== Mismatched free() / delete / delete []
+==27748==    at 0x4A0545F: operator delete(void*) (vg_replace_malloc.c:387)
+==27748==    by 0x41AF44: Room::clear() (room.cpp:86)
+==27748==    by 0x41ADC3: Room::~Room() (room.cpp:48)
+==27748==    by 0x418E25: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27748==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27748==    by 0x416DC0: proxy_test::test_allocate(util::sizedpipestream<512ul>&) (unit_tests.cpp:21)
+==27748==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27748==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27748==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27748==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27748==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27748==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27748==  Address 0x4c77b40 is 0 bytes inside a block of size 208 alloc'd
+==27748==    at 0x4A0674C: operator new[](unsigned long) (vg_replace_malloc.c:305)
+==27748==    by 0x41AC95: Room::Room(std::string const&, int) (room.cpp:19)
+==27748==    by 0x41B463: fileio::readRoom(std::string const&) (fileio.cpp:106)
+==27748==    by 0x41B3C4: fileio::nextRoom() (fileio.cpp:98)
+==27748==    by 0x418DC9: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27748==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27748==    by 0x416DC0: proxy_test::test_allocate(util::sizedpipestream<512ul>&) (unit_tests.cpp:21)
+==27748==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27748==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27748==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27748==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27748==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27748== 
+==27748== Mismatched free() / delete / delete []
+==27748==    at 0x4A0545F: operator delete(void*) (vg_replace_malloc.c:387)
+==27748==    by 0x41AF44: Room::clear() (room.cpp:86)
+==27748==    by 0x41ADC3: Room::~Room() (room.cpp:48)
+==27748==    by 0x418B07: Allocator::~Allocator() (allocator.cpp:26)
+==27748==    by 0x416ECE: proxy_test::test_allocate(util::sizedpipestream<512ul>&) (unit_tests.cpp:24)
+==27748==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27748==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27748==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27748==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27748==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27748==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27748==    by 0x404BEC: proxy::RunTests::run_single_test(char const*) (proxy.cpp:238)
+==27748==  Address 0x4c79890 is 0 bytes inside a block of size 208 alloc'd
+==27748==    at 0x4A0674C: operator new[](unsigned long) (vg_replace_malloc.c:305)
+==27748==    by 0x41AFC1: Room::copy(Room const&) (room.cpp:99)
+==27748==    by 0x41ADA4: Room::operator=(Room const&) (room.cpp:38)
+==27748==    by 0x418DF8: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27748==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27748==    by 0x416DC0: proxy_test::test_allocate(util::sizedpipestream<512ul>&) (unit_tests.cpp:21)
+==27748==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27748==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27748==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27748==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27748==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27748==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27748== 
+Result: FAILED:
+Invalid read/write errors
+
+----------------------------------------------------------------
+test_printrooms (run under valgrind) [20 points]
+Result: FAILED: Invalid read/write errors
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_printrooms [worth 20 points, output below]
+==27755== Mismatched free() / delete / delete []
+==27755==    at 0x4A0545F: operator delete(void*) (vg_replace_malloc.c:387)
+==27755==    by 0x41AF44: Room::clear() (room.cpp:86)
+==27755==    by 0x41ADC3: Room::~Room() (room.cpp:48)
+==27755==    by 0x418E25: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27755==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27755==    by 0x416F44: proxy_test::test_printrooms(util::sizedpipestream<512ul>&) (unit_tests.cpp:30)
+==27755==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27755==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27755==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27755==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27755==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27755==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27755==  Address 0x4c77b40 is 0 bytes inside a block of size 208 alloc'd
+==27755==    at 0x4A0674C: operator new[](unsigned long) (vg_replace_malloc.c:305)
+==27755==    by 0x41AC95: Room::Room(std::string const&, int) (room.cpp:19)
+==27755==    by 0x41B463: fileio::readRoom(std::string const&) (fileio.cpp:106)
+==27755==    by 0x41B3C4: fileio::nextRoom() (fileio.cpp:98)
+==27755==    by 0x418DC9: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27755==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27755==    by 0x416F44: proxy_test::test_printrooms(util::sizedpipestream<512ul>&) (unit_tests.cpp:30)
+==27755==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27755==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27755==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27755==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27755==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27755== 
+==27755== Mismatched free() / delete / delete []
+==27755==    at 0x4A0545F: operator delete(void*) (vg_replace_malloc.c:387)
+==27755==    by 0x41AF44: Room::clear() (room.cpp:86)
+==27755==    by 0x41ADC3: Room::~Room() (room.cpp:48)
+==27755==    by 0x418B07: Allocator::~Allocator() (allocator.cpp:26)
+==27755==    by 0x41705E: proxy_test::test_printrooms(util::sizedpipestream<512ul>&) (unit_tests.cpp:34)
+==27755==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27755==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27755==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27755==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27755==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27755==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27755==    by 0x404BEC: proxy::RunTests::run_single_test(char const*) (proxy.cpp:238)
+==27755==  Address 0x4c79890 is 0 bytes inside a block of size 208 alloc'd
+==27755==    at 0x4A0674C: operator new[](unsigned long) (vg_replace_malloc.c:305)
+==27755==    by 0x41AFC1: Room::copy(Room const&) (room.cpp:99)
+==27755==    by 0x41ADA4: Room::operator=(Room const&) (room.cpp:38)
+==27755==    by 0x418DF8: Allocator::loadRooms(std::string const&) (allocator.cpp:77)
+==27755==    by 0x418A75: Allocator::Allocator(std::string const&, std::string const&) (allocator.cpp:18)
+==27755==    by 0x416F44: proxy_test::test_printrooms(util::sizedpipestream<512ul>&) (unit_tests.cpp:30)
+==27755==    by 0x4071A1: monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (monad_shared.h:72)
+==27755==    by 0x405FDB: proxy::test_execution::child_test() (proxy.cpp:549)
+==27755==    by 0x4059FA: proxy::test_execution::child() (proxy.cpp:434)
+==27755==    by 0x408BFC: int proxy::fork_execute<proxy::test_execution>(proxy::test_execution&) (proxy.cpp:508)
+==27755==    by 0x405E5F: proxy::RunTests::execute_test(monad_shared::unit_test_input const&, bool) (proxy.cpp:489)
+==27755==    by 0x404CE4: proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (proxy.cpp:250)
+==27755== 
+Room Allocation (237/248)
+MEB 153 (31/32): W F
+MEB 218 (30/31): L H
+MEB 243 (29/30): S P Q
+MEB 335 (28/30): K R U V
+Siebel 1105 (24/24): G A X
+Siebel 1109 (23/24): M J I
+Siebel 1302 (20/21): Z N O
+Siebel 1304 (19/21): B D E
+BUR 140 (33/35): C Y T
+Result: FAILED:
+Invalid read/write errors
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 70
+
