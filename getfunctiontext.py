@@ -26,10 +26,12 @@ def checkfnname(fn,testname):
     return (' ' + fn) in testname or ('\t' + fn) in testname or ('\n' + fn) in testname
 
 def search(param_list,params):
-    params = params.split(',')
-    if len(param_list) != len(params):
+    params2 = params.split(',')
+    if len(param_list) != len(params2):
+        if(len(param_list)==0 and ',' not in params):
+            return True
         return False
-    return all(x in y for (x,y) in zip(param_list,params))
+    return all(x in y for (x,y) in zip(param_list,params2))
 
 def test(filename, functionName, param_list):
     # Have to check for " and  ' and \
