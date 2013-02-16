@@ -3,12 +3,11 @@ import file_directory
 import json
 import os
 from sys import argv
-script_name, filename = argv
 
 def get_data(filename):
     return json.dumps({'files':file_directory.get_files(),'errors':cleaning.parseFile(filename)})
 
-def parseFile(readFilename='output.txt',writeFilename='json.json'):
+def parseFile(readFilename='output.txt',writeFilename='json.txt'):
     f = open(writeFilename,'wb')
     f.write(get_data(readFilename))
     f.close()
@@ -21,14 +20,15 @@ def createFiles(filename):
         f.close()
 
 
-parseFile(filename)
+parseFile()
 
 jtime = os.stat('json.json').st_mtime
 
 while(1):
     newjtime = os.stat('json.json').st_mtime
     if (newjtime!=jtime):
-        createFiles(filename)
+        createFiles('json.txt')
         jtime = newjtime
+        print "changed"
         
         
