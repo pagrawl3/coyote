@@ -1,0 +1,23 @@
+def getFunctionText(filename, functionName):
+    data = open(filename, "rb").read()
+    raw = data
+    data = data.split('\n')
+    count = 0
+    start = 0
+    text = ""
+    for a in data:
+        if functionName in a:
+            start = 1
+        if(start):
+            text += a + '\n'
+            if '{' in a:
+                count+=1
+            if '}' in a:
+                count-=1
+            if(count==0 and functionName not in a):
+                return text
+
+    
+ 
+                
+        
