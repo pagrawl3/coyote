@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100);
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather:300);
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300);
+@font-face {
+  font-family: SmartFolder;
+  src: url('../fonts/smartfolder.ttf');
+}
+body {
+  background: url("../images/tiny_grid.png") repeat;
+}

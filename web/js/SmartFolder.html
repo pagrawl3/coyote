@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>SmartFolder</title>
+  
+	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="stylesheets/index.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="js/jquery.fittext.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery.color-2.1.1.min.js"></script>
+	
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="container">
+		<center>
+			<header class="rows">			
+				<img src="images/logo.png" class="logo" alt="logo"></img>
+			</header>	
+			<header>
+				<h1 class="logo-text"> SmartFolder </h1>
+				<h2 class="logo-subtext"> Cause you're too lazy to do it yourself </h2>
+			</header>
+			<div class="rows start">
+				<h3>Get Started</h3>
+			</div>
+
+		<div class="mainForm">
+			<form>
+				<div class="rows mainInfo">
+						<div class="four columns mainField">
+							<span aria-hidden="true" data-icon="&#xe002;"></span>
+							<input type="text" id="username" name="username" placeholder="username"></input>
+						</div>
+						<div class="four columns mainField">
+							<span aria-hidden="true" data-icon="&#xe001;"></span>
+							<input type="password" id="password" name="password" placeholder="password"></input>
+						</div>
+						<div class="four columns mainField">
+							<span aria-hidden="true" data-icon="&#xe003;"></span>
+							<input type="text" id="deviceID" name="deviceID" placeholder="device number"></input>
+						</div>
+				</div>
+			</form>
+
+			<div class="rows addSubject">
+				<div class="twelve columns centered">
+					<div class="six columns addButton">
+						<span aria-hidden="true" data-icon="&#xe000;"></span><br><br> 
+						<h3>Add Subject</h3>
+					</div>
+					<ul class="block-grid one-up">
+  						<li><input type="text" id="username" name="username" placeholder="username"></input></li>
+  						<li><input type="text" id="username" name="username" placeholder="username"></input></li>
+					  	<li><input type="text" id="username" name="username" placeholder="username"></input></li>
+					</div>
+				</div>
+			</div>
+		</div>
+		</center>
+	</div>
+</body>
