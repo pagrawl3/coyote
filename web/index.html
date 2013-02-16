@@ -23,6 +23,7 @@
 	<script src="js/index.js"></script>
 	<script src="js/jquery.color-2.1.1.min.js"></script>
 	<script src="js/jquery.foundation.reveal.js"></script>
+	<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	
 	<!-- IE Fix for HTML5 Tags -->
 	<!--[if lt IE 9]>
@@ -32,5 +33,28 @@
 
 <body>
 	<div class="container">
+		<center>
+			<div class="row header">
+				<div class="twelve columns headerText">
+					<h1> ~ valengrind ~ <h1>
+				</div>
+			</div>
+		</center>
+		<div class="row body">
+			<div class="six columns mainEditor">
+				<div id="editorTitle"><h2>Name of file<h2></div>
+				<div id="editor"></div>
+			</div>
+			<div class="six columns errors">
+				<div class="errorWindow">
+					<h2>Errors</h2>
+					<ul class="errorList">
+						<li class="errorItem active">Error1</li>
+						<li class="errorItem">Error2</li>
+						<li class="errorItem">Error3</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>

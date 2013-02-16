@@ -10,3 +10,74 @@
 body {
   background: url("../images/tiny_grid.png") repeat;
 }
+body .headerText {
+  display: block;
+  margin-top: 24px;
+}
+body .headerText h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 36px;
+}
+body .body {
+  margin-top: 20px;
+  width: 80%;
+}
+body .body .ace_active_line {
+  width: 100% !important;
+}
+body .body .mainEditor #editorTitle {
+  display: block;
+  height: 40px;
+  background-color: rgba(1, 1, 1, 0.7);
+  box-shadow: 10px 10px 0px 0px rgba(1, 1, 1, 0.1);
+}
+body .body .mainEditor #editorTitle h2 {
+  display: block;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+}
+body .body .mainEditor #editor {
+  box-shadow: 10px 10px 0px 0px rgba(1, 1, 1, 0.1);
+  border: 1px solid rgba(1, 1, 1, 0.6);
+  background-color: #fff;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 600px;
+}
+body .body .errors .errorWindow {
+  background-color: #fff;
+  height: 200px;
+}
+body .body .errors .errorWindow h2 {
+  display: block;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  padding-bottom: 0px;
+}
+body .body .errors .errorWindow .errorList {
+  list-style: none;
+  display: block;
+  margin-left: 30px;
+  padding-left: 0;
+}
+body .body .errors .errorWindow .errorList .errorItem {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #aaa;
+}
+body .body .errors .errorWindow .errorList .active {
+  color: #000;
+}
