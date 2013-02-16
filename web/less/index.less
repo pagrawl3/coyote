@@ -130,10 +130,7 @@ body {
 		.listOfErrors {
 
 			.arrow {
-				position: relative;
-				float: left;
-				top: 10px;
-				display: block;
+				display: inline-block;
 				font-family: 'iconFont'; 
 				font-size: 24px;
 				speak: none;
@@ -141,13 +138,17 @@ body {
 				&:before {
 				content: attr(data-icon);
 				}
+				position: relative;
+				top: -25px !important;
+				left:10px;
 			}
 
 			.notFirst {
-				margin-left: 30px;
+				margin-left: 10px;
 			}
 			.error {
 				margin-bottom: 10px;
+				display: inline-block;
 				.errorContainer {
 					display: inline-block;
 					background-color: #fff;
