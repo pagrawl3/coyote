@@ -1,4 +1,7 @@
-
+import os
+import re
+pattern = '(at[" "]0x[0-9A-F]*:)|(by[" "]0x[0-9A-F]*:)'
+prog = re.compile(pattern)
 def trim(a):
     return a.lstrip().rstrip()
 
@@ -14,8 +17,12 @@ def parseLine(line):
         middle = last.split(':')[0][1:]
         third = last.split(':')[1][:-1]
         first = trim(first)
-        return first,middle, third
-    return trim(cleanLine(line))
+        return {'function':parseFunction(first,third),'filename':middle,
+                'lineno':third,'clickable':True}
+    return {'text':trim(cleanLine(line)),'clickable':False}
+
+def parseFunction(functionName,lineNo):
+    return functionName
 
 def getSplitVal(raw):
     for w in raw.split('\r\n'):
@@ -24,9 +31,10 @@ def getSplitVal(raw):
 
 def test():
     filename = 'output.txt'
-    raw = open(filename,'r').read()
+    raw = open(filename,'rb').read()
     splitVal = getSplitVal(raw)
     data = raw.split(splitVal)[1:]
+<<<<<<< HEAD
     splitVal = splitVal[:-1]
     #return parseError(data[0].replace(splitVal,''))
     return [parseError(w.replace(splitVal,'')) for w in data]
@@ -37,7 +45,26 @@ def parseError(chunk):
         error = data[1]
         trace = getTrace(data[2:])
         return error,trace
+=======
+    splitVal = splitVal[:-2]
+    data = [w.replace(splitVal,'') for w in data]
+    data[0] = data[0].lstrip()
+    return data,[parseError(w) for w in data]
+
+def parseError(chunk):
+    data = chunk.split('\r\n')
+    out = {'error':[],'trace':[],'other':[]}
+    if len(data) >= 1:
+        for w in data:
+            if test_pattern(w.lstrip()):
+                out['trace'].append(parseLine(w))
+            elif not out['trace']:
+                out['error'].append(w)
+            else:
+                out['other'].append(w)
+        return out
+>>>>>>> a143bf218a2950d25b0c8e214cf98921115192a2
     return None
 
-def getTrace(data_chunk):
-    return [parseLine(w) for w in data_chunk if w]
+def test_pattern(val):
+    return bool(prog.search(val))
